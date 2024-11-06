@@ -24,12 +24,11 @@ Abrir el proyecto en Visual Studio:
 Abrir el archivo PruebaTecnicaCarsales.sln en Visual Studio.
 Restaurar dependencias: En Visual Studio, las dependencias se restauran automáticamente al abrir el proyecto. Sin embargo, si se prefiere hacerlo manualmente, se puede ejecutar el siguiente comando en la terminal dentro de la carpeta del proyecto:
 
-
 dotnet restore
+
 Ejecutar la API: En Visual Studio, simplemente se debe presionar F5 o hacer clic en "Iniciar" para ejecutar el proyecto. Esto iniciará la API en el puerto 5000 por defecto (puede variar según la configuración).
 
 Verificar el funcionamiento:
-
 La API estará disponible en http://localhost:5000 (o el puerto configurado).
 Puede probar que la API está funcionando correctamente accediendo a la documentación de Swagger: http://localhost:5000/swagger.
 
@@ -48,17 +47,18 @@ git clone https://github.com/Carloslatorrev/PruebaTecnicaCarsales.git
 cd <directorio_del_repositorio>/web/PruebaTecnicaCarsales-web
 Instalar dependencias: En la carpeta del proyecto Angular (/web/PruebaTecnicaCarsales-web), se debe ejecutar el siguiente comando para instalar las dependencias:
 
-
 npm install
+
 Configurar CORS (si es necesario): Si se está utilizando la API localmente, asegurarse de que se haya configurado correctamente el CORS en el backend (puerto 5000) para permitir solicitudes desde el frontend en el puerto 4200.
 
 Iniciar el servidor de desarrollo: Para iniciar el servidor de desarrollo de Angular, ejecutar el siguiente comando:
 
 ng serve --configuration production
-Verificar el funcionamiento:
 
+Verificar el funcionamiento:
 El frontend estará disponible en http://localhost:4200 y debería poder interactuar con la API en http://localhost:5000.
 Si se accede correctamente a la página, la aplicación estará corriendo de manera local.
+
 Consideraciones adicionales
 Backend (API): El backend se ejecuta en .NET 8.0 y está configurado para escuchar en el puerto 5000. Asegúrese de que no haya ningún otro servicio ocupando dicho puerto antes de ejecutar la API.
 
