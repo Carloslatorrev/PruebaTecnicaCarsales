@@ -1,0 +1,193 @@
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <!-- Pestañas -->
+      <div class="tabs">
+        <button (click)="selectTab('characters')" [class.active]="activeTab === 'characters'">Personajes</button>
+        <button (click)="selectTab('episodes')" [class.active]="activeTab === 'episodes'">Episodios</button>
+        <button (click)="selectTab('locations')" [class.active]="activeTab === 'locations'">Ubicaciones</button>
+      </div>
+
+ 
+      <div *ngIf="activeTab === 'characters'">
+   
+        <div class="search-filter">
+          <input type="text" placeholder="Buscar personaje..." (input)="searchCharacter($event)" />
+          
+       
+          <div>
+            <label for="status">Estado:</label>
+            <select id="status" [(ngModel)]="filterCharacterStatus">
+              <option value="">Todos</option>
+              <option value="Alive">Vivo</option>
+              <option value="Dead">Muerto</option>
+              <option value="unknown">Desconocido</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="species">Especie:</label>
+            <select id="species" [(ngModel)]="filterCharacterSpecies">
+              <option value="">Todas</option>
+              <option *ngFor="let species of speciesList" [value]="species">{{ species }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="type">Tipo:</label>
+            <select id="type" [(ngModel)]="filterCharacterType">
+              <option value="">Todos</option>
+              <option *ngFor="let type of typesList" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="gender">Género:</label>
+            <select id="gender" [(ngModel)]="filterCharacterGender">
+              <option value="">Todos</option>
+              <option value="Male">Masculino</option>
+              <option value="Female">Femenino</option>
+              <option value="unknown">Desconocido</option>
+            </select>
+          </div>
+
+          <button (click)="applyFilters()">Buscar personaje</button>
+        </div>
+
+   
+        <div class="card-container">
+          <div *ngFor="let character of characters" class="card">
+            <h3>{{ character.name }}</h3>
+            <p>Status: {{ character.status }}</p>
+            <p>Species: {{ character.species }}</p>
+
+            <button (click)="toggleCharacterDetail(character.id)">Ver detalle</button>
+
+            <div *ngIf="selectedCharacter && selectedCharacter.id === character.id" class="detail">
+              <img [src]="selectedCharacter.image" alt="{{ selectedCharacter.name }}" />
+              <p><strong>Origen:</strong> {{ selectedCharacter.origin.name }}</p>
+              <p><strong>Última ubicación:</strong> {{ selectedCharacter.location.name }}</p>
+              <p><strong>Episodios:</strong> {{ selectedCharacter.episode.length }}</p>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="pagination">
+          <button (click)="prevPage('characters')" [disabled]="currentPageCharacters === 1">Anterior</button>
+          <span>Página {{ currentPageCharacters }} de {{ totalPagesCharacters }}</span>
+          <button (click)="nextPage('characters')" [disabled]="currentPageCharacters === totalPagesCharacters">Siguiente</button>
+        </div>
+
+      </div>
+
+  
+      <div *ngIf="activeTab === 'episodes'">
+       
+        <div class="search-filter">
+          <input type="text" placeholder="Buscar episodio..." (input)="searchEpisode($event)" />
+          
+       
+          <div>
+            <label for="episodeCode">Código de Episodio:</label>
+            <input type="text" id="episodeCode" [(ngModel)]="filterEpisodeCode" placeholder="Código de episodio" />
+          </div>
+          
+          <button (click)="applyFiltersEpisode()">Buscar episodio</button>
+        </div>
+
+        
+        <div class="card-container">
+          <div *ngFor="let episode of episodes" class="card">
+            <h3>{{ episode.name }}</h3>
+            <p>{{ episode.air_date }}</p>
+            <button (click)="showEpisodeDetail(episode.id)">Ver detalle</button>
+
+       
+            <div *ngIf="selectedEpisode && selectedEpisode.id === episode.id" class="detail">
+              <p><strong>Nombre:</strong> {{ selectedEpisode.name }}</p>
+              <p><strong>Fecha de emisión:</strong> {{ selectedEpisode.air_date }}</p>
+              <p><strong>Episodio:</strong> {{ selectedEpisode.episode }}</p>
+              
+
+           
+              <p><strong>Personajes:</strong></p>
+              <div *ngIf="selectedEpisode.charactersDetails && selectedEpisode.charactersDetails.length > 0; else loading">
+                <div *ngFor="let character of selectedEpisode.charactersDetails" class="character-card">
+                  <img [src]="character.image" alt="{{ character.name }}" class="character-image" />
+                  <p>{{ character.name }}</p>
+                </div>
+              </div>
+              <ng-template #loading>
+                <p>Cargando personajes...</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="pagination">
+          <button (click)="prevPage('episodes')" [disabled]="currentPageEpisodes === 1">Anterior</button>
+          <span>Página {{ currentPageEpisodes }} de {{ totalPagesEpisodes }}</span>
+          <button (click)="nextPage('episodes')" [disabled]="currentPageEpisodes === totalPagesEpisodes">Siguiente</button>
+        </div>
+
+      </div>
+
+     
+      <div *ngIf="activeTab === 'locations'">
+        <div class="search-filter">
+          <input type="text" placeholder="Buscar ubicación..." (input)="searchLocation($event)" />
+          
+          <div>
+            <label for="locationType">Tipo:</label>
+            <select id="locationType" [(ngModel)]="filterLocationType">
+              <option value="">Todos</option>
+              <option *ngFor="let type of typesLocationList" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="dimension">Dimensión:</label>
+            <select id="dimension" [(ngModel)]="filterLocationDimension">
+              <option value="">Todos</option>
+              <option *ngFor="let dimension of dimensionLocationList" [value]="dimension">{{ dimension }}</option>
+            </select>
+          </div>
+
+          <button (click)="applyFiltersLocation()">Buscar ubicación</button>
+        </div>
+
+  
+        <div class="card-container">
+          <div *ngFor="let location of locations" class="card">
+            <h3>{{ location.name }}</h3>
+            <p>Dimension: {{ location.dimension }}</p>
+            <p>Tipo: {{ location.type }}</p>
+            <button (click)="showLocationDetail(location.id)">Ver detalle</button>
+
+            <div *ngIf="selectedLocation && selectedLocation.id === location.id" class="detail">
+              <p><strong>Nombre:</strong> {{ selectedLocation.name }}</p>
+              <p><strong>Dimension:</strong> {{ selectedLocation.dimension }}</p>
+              <p><strong>Tipo:</strong> {{ selectedLocation.type }}</p>
+              <p><strong>Personajes:</strong> {{ selectedLocation.residents.length }}</p>
+            </div>
+          </div>
+        </div>
+
+ 
+        <div class="pagination">
+          <button (click)="prevPage('locations')" [disabled]="currentPageLocations === 1">Anterior</button>
+          <span>Página {{ currentPageLocations }} de {{ totalPagesLocations }}</span>
+          <button (click)="nextPage('locations')" [disabled]="currentPageLocations === totalPagesLocations">Siguiente</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="right-side">
+    
+    </div>
+  </div>
+</main>
