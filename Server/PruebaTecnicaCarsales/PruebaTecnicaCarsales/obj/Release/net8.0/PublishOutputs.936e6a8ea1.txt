@@ -1,0 +1,12 @@
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\PruebaTecnicaCarsales.exe
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\appsettings.Development.json
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\appsettings.json
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\PruebaTecnicaCarsales.dll
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\PruebaTecnicaCarsales.deps.json
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\PruebaTecnicaCarsales.runtimeconfig.json
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\PruebaTecnicaCarsales.pdb
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\Microsoft.OpenApi.dll
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\Newtonsoft.Json.dll
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\carle\Documents\ChileAutos\PruebaTecnicaCarsales\Server\PruebaTecnicaCarsales\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
