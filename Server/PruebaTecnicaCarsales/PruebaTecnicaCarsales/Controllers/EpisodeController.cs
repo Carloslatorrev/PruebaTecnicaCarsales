@@ -39,7 +39,7 @@ namespace PruebaTecnicaCarsales.Controllers
         }
 
         [HttpGet("filter")]
-        public async Task<IActionResult> FilterEpisodes([FromQuery] string name, [FromQuery] string episode, int page = 1)
+        public async Task<IActionResult> FilterEpisodes([FromQuery] string name = null, [FromQuery] string episode = null, int page = 1)
         {
 
             try

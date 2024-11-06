@@ -40,7 +40,7 @@ namespace PruebaTecnicaCarsales.Controllers
         }
 
         [HttpGet("filter")]
-        public async Task<IActionResult> FilterLocations([FromQuery] string name, [FromQuery] string type, [FromQuery] string dimension, int page = 1)
+        public async Task<IActionResult> FilterLocations([FromQuery] string name = null, [FromQuery] string type = null, [FromQuery] string dimension = null, int page = 1)
         {
 
             try
